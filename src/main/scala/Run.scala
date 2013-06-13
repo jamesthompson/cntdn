@@ -5,7 +5,7 @@ import scalaz._, Scalaz._, effect._
 
 object Run extends App {
 	
-	// Create the unsafe IO operation that will change load the words
+	// Create the unsafe IO operation that will load the words
 	val loadDictionaryAction = IO { 
 		Source.fromFile("/Users/James/Desktop/cntdn/src/main/resources/dictionary.txt").getLines.toStream 
 	}
