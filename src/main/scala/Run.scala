@@ -21,7 +21,7 @@ object Run extends App {
 		case Nil 		=> true
 		case h :: t => tstr.contains(h) ? canBeMade(t, tstr diff h.point[List]) | false
 	}
-
+	
 	// Make a list of words than can be made with these characters
 	val canMake = words filter { word => canBeMade(word.toList) } println
 }
