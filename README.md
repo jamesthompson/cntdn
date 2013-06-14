@@ -1,4 +1,4 @@
-# Scala / Scalaz Countdown Words and Numbers Game Solver
+# Scala Countdown Solver
 
 ## About
 
