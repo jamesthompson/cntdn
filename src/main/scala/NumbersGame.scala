@@ -2,6 +2,10 @@ package cntdn
 
 import scalaz._, Scalaz._, effect._
 
+// A faithful port to Scala of the correct program defined by G. Hutton in
+// The Countdown Problem, J. Func. Prog. (2002), 12 (6): pp 609-616
+// see also : http://www.cs.nott.ac.uk/~gmh/countdown.hs
+
 object NumbersGame extends App {
 
 	// Types
