@@ -3,6 +3,30 @@ package cntdn
 import scalaz._, Scalaz._, effect._
 
 object NumbersGame extends App {
+
+	implicit class Timer[T](f: => T) {
+		def times = {
+	    val before = System.currentTimeMillis
+	    val result = f
+	    val end = System.currentTimeMillis
+	    println(s"Operation elapsed time = ${(end - before) / 1e6} s >>> Result = $result")
+	    result
+	  }
+	  def timems = {
+	    val before = System.currentTimeMillis
+	    val result = f
+	    val end = System.currentTimeMillis
+	    println(s"Operation elapsed time = ${end - before} ms >>> Result = $result")
+	    result
+	  }
+	  def timens = {
+	    val before = System.nanoTime
+	    val result = f
+	    val end = System.nanoTime
+	    println(s"Operation elapsed time = ${(end - before) / 1e6} ms >>> Result = $result")
+	    result
+	  }
+	}
 	
 	sealed trait Op
 	case object Add extends Op { override def toString = "+" }
@@ -95,8 +119,12 @@ object NumbersGame extends App {
 					if(r.i === target)
 		} yield r
 
-	val solns = solutions(List(1, 3, 7, 10, 25, 50), 765)
+	val solns = solutions(List(1, 3, 7, 10, 25, 50), 765) timens
+	val solns2 = solutions(List(1, 3, 7, 10, 25, 50), 765) timens
+	val solns3 = solutions(List(1, 3, 7, 10, 25, 50), 831) timens
 
-	println(solns.mkString("\n"))
+
+
+	// println(solns.mkString("\n"))
 
 }
