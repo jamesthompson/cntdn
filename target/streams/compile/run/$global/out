@@ -1,13 +1,13 @@
-[info] Running cntdn.Run 
+[info] Running cntdn.NumbersGame 
 [debug] Starting sandboxed run...
 [debug] Waiting for threads to exit or System.exit to be called.
-[debug] Waiting for thread run-main to exit
 [debug]   Classpath:
 [debug] 	/Users/James/Desktop/cntdn/target/scala-2.10/classes
 [debug] 	/Users/James/.sbt/boot/scala-2.10.2/lib/scala-library.jar
 [debug] 	/Users/James/.ivy2/cache/org.scalaz/scalaz-core_2.10/bundles/scalaz-core_2.10-7.0.0.jar
 [debug] 	/Users/James/.ivy2/cache/org.scalaz/scalaz-effect_2.10/bundles/scalaz-effect_2.10-7.0.0.jar
 [debug] 	/Users/James/.ivy2/cache/org.scalaz/scalaz-typelevel_2.10/bundles/scalaz-typelevel_2.10-7.0.0.jar
+[debug] Waiting for thread run-main to exit
 [debug] 	Thread run-main exited.
 [debug] Interrupting remaining threads (should be all daemons).
 [debug] Sandboxed run complete..

@@ -8,7 +8,7 @@ libraryDependencies ++= Seq(
   "org.scalaz" %% "scalaz-typelevel" % "7.0.0"
 )
 
-mainClass in (Compile, run) := Some("cntdn.Run")
+mainClass in (Compile, run) := Some("cntdn.NumbersGame")
 
 
 

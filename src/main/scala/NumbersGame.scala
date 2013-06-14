@@ -5,18 +5,29 @@ import scalaz._, Scalaz._, effect._
 object NumbersGame extends App {
 	
 	sealed trait Op
-	case object Add extends Op
-	case object Minus extends Op
-	case object Multiply extends Op
-	case object Divide extends Op
+	case object Add extends Op {
+		override def toString = "+"
+	}
+	case object Minus extends Op {
+		override def toString = "-"
+	}
+	case object Multiply extends Op {
+		override def toString = "*"
+	}
+	case object Divide extends Op {
+		override def toString = "/"
+	}
 
 	sealed trait Expr
-	case class Value(val n: Int) extends Expr 
-	case class App(val op: Op, val l: Expr, val r: Expr) extends Expr
-
-	case class Result(val expr: Expr, val i: Int) {
-		override def toString = ???
+	case class Value(val n: Int) extends Expr {
+		override def toString = n.toString
 	}
+	case class App(val op: Op, val l: Expr, val r: Expr) extends Expr {
+		// def exprStr(e: Expr) : String = s"( ${exprStr(e)} )"
+		// override def toString = s"${exprStr(l)} ${op.toString} ${exprStr(r)}"
+	}
+
+	case class Result(val expr: Expr, val i: Int)
 
 	def values(expr: Expr) : List[Int] = expr match {
 		case v:Value => List(v.n)
@@ -28,7 +39,7 @@ object NumbersGame extends App {
 		case a:App => for { x <- eval(a.l);
 												y <- eval(a.r); 
 												if(valid(a.op, x, y))
-											} yield List(calcOp(a.op, x, y))
+											} yield calcOp(a.op, x, y)
 	}
 
 	def calcOp(op: Op, x: Int, y: Int) : Int = op match {
@@ -51,11 +62,11 @@ object NumbersGame extends App {
   }
 	
 	def solution(e: Expr, ns: List[Int], n: Int) : Boolean = 
-		elem(values(e), ns.permutations.toList) && calcOp(e) === List(n)
+		elem(values(e), subbags(ns)) && eval(e) === List(n)
 
 	def results(values: List[Int]) : List[Result] = values match {
 		case Nil 		 => Nil
-		case List(h) => (h gt 0) ? Result(Value(h), h)
+		case List(h) => (h gt 0) ? List(Result(Value(h), h)) | Nil
 		case h :: t  => for { (ls, rs) <- nesplit(values);
 													lx <- results(ls);
 													ry <- results(rs);
@@ -76,10 +87,25 @@ object NumbersGame extends App {
 
 	def subs[T](l: List[T]) : List[List[T]] = l match {
 		case Nil => List(List())
-		case h :: t => ???
+		case h :: t => {
+			val ys = subs(t)
+			(ys ++ ys.map(h :: _))
+		}
 	}
 
+	def subbags[T](l: List[T]) : List[List[T]] =
+		for {	ys <- subs(l);
+					zs <- ys.permutations.toList
+		} yield zs
 
+	def solutions(ns: List[Int], target: Int) : List[Expr] = 
+		for { nss <- subbags(ns);
+					r <- results(nss);
+					if(r.i === target)
+		} yield r.expr
 
+	val solns = solutions(List(1, 3, 7, 10, 25, 50), 765)
+
+	println(solns.mkString("\n"))
 
 }

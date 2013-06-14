@@ -1,24 +1,15 @@
 [debug] 
 [debug] Initial source changes: 
 [debug] 	removed:Set()
-[debug] 	added: Set(/Users/James/Desktop/cntdn/src/main/scala/NumbersGame.scala)
-[debug] 	modified: Set(/Users/James/Desktop/cntdn/src/main/scala/Run.scala)
-[debug] Removed products: Set(/Users/James/Desktop/cntdn/target/scala-2.10/classes/cntdn/Run$$anonfun$canBeMade$1.class, /Users/James/Desktop/cntdn/target/scala-2.10/classes/cntdn/Run$$anonfun$canBeMade$1$$anonfun$apply$mcZ$sp$1.class, /Users/James/Desktop/cntdn/target/scala-2.10/classes/cntdn/Run.class, /Users/James/Desktop/cntdn/target/scala-2.10/classes/cntdn/Run$delayedInit$body.class, /Users/James/Desktop/cntdn/target/scala-2.10/classes/cntdn/Run$$anonfun$2.class, /Users/James/Desktop/cntdn/target/scala-2.10/classes/cntdn/Run$$anonfun$canBeMade$2.class, /Users/James/Desktop/cntdn/target/scala-2.10/classes/cntdn/Run$.class, /Users/James/Desktop/cntdn/target/scala-2.10/classes/cntdn/Run$$anonfun$1.class)
+[debug] 	added: Set()
+[debug] 	modified: Set()
+[debug] Removed products: Set()
 [debug] Modified external sources: Set()
 [debug] Modified binary dependencies: Set()
-[debug] Initial directly invalidated sources: Set(/Users/James/Desktop/cntdn/src/main/scala/NumbersGame.scala, /Users/James/Desktop/cntdn/src/main/scala/Run.scala)
+[debug] Initial directly invalidated sources: Set()
 [debug] 
 [debug] Sources indirectly invalidated by:
-[debug] 	product: Set(/Users/James/Desktop/cntdn/src/main/scala/Run.scala)
+[debug] 	product: Set()
 [debug] 	binary dep: Set()
 [debug] 	external source: Set()
-[debug] Initially invalidated: Set(/Users/James/Desktop/cntdn/src/main/scala/NumbersGame.scala, /Users/James/Desktop/cntdn/src/main/scala/Run.scala)
-[info] Compiling 2 Scala sources to /Users/James/Desktop/cntdn/target/scala-2.10/classes...
-[debug] Running cached compiler 6f1c1555, interfacing (CompilerInterface) with Scala compiler version 2.10.2
-[debug] Calling Scala compiler with arguments  (CompilerInterface):
-[debug] 	-d
-[debug] 	/Users/James/Desktop/cntdn/target/scala-2.10/classes
-[debug] 	-bootclasspath
-[debug] 	/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/lib/JObjC.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/jre/classes:/Users/James/.sbt/boot/scala-2.10.2/lib/scala-library.jar
-[debug] 	-classpath
-[debug] 	/Users/James/Desktop/cntdn/target/scala-2.10/classes:/Users/James/.ivy2/cache/org.scalaz/scalaz-core_2.10/bundles/scalaz-core_2.10-7.0.0.jar:/Users/James/.ivy2/cache/org.scalaz/scalaz-effect_2.10/bundles/scalaz-effect_2.10-7.0.0.jar:/Users/James/.ivy2/cache/org.scalaz/scalaz-typelevel_2.10/bundles/scalaz-typelevel_2.10-7.0.0.jar
+[debug] Initially invalidated: Set()
