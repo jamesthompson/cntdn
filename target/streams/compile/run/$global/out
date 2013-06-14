@@ -6,7 +6,6 @@
 [debug] 	/Users/James/.sbt/boot/scala-2.10.2/lib/scala-library.jar
 [debug] 	/Users/James/.ivy2/cache/org.scalaz/scalaz-core_2.10/bundles/scalaz-core_2.10-7.0.0.jar
 [debug] 	/Users/James/.ivy2/cache/org.scalaz/scalaz-effect_2.10/bundles/scalaz-effect_2.10-7.0.0.jar
-[debug] 	/Users/James/.ivy2/cache/org.scalaz/scalaz-typelevel_2.10/bundles/scalaz-typelevel_2.10-7.0.0.jar
 [debug] Waiting for thread run-main to exit
 [debug] 	Thread run-main exited.
 [debug] Interrupting remaining threads (should be all daemons).

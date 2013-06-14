@@ -4,29 +4,7 @@ import scalaz._, Scalaz._, effect._
 
 object NumbersGame extends App {
 
-	implicit class Timer[T](f: => T) {
-		def times = {
-	    val before = System.currentTimeMillis
-	    val result = f
-	    val end = System.currentTimeMillis
-	    println(s"Operation elapsed time = ${(end - before) / 1e6} s >>> Result = $result")
-	    result
-	  }
-	  def timems = {
-	    val before = System.currentTimeMillis
-	    val result = f
-	    val end = System.currentTimeMillis
-	    println(s"Operation elapsed time = ${end - before} ms >>> Result = $result")
-	    result
-	  }
-	  def timens = {
-	    val before = System.nanoTime
-	    val result = f
-	    val end = System.nanoTime
-	    println(s"Operation elapsed time = ${(end - before) / 1e6} ms >>> Result = $result")
-	    result
-	  }
-	}
+	// Types
 	
 	sealed trait Op
 	case object Add extends Op { override def toString = "+" }
@@ -44,18 +22,7 @@ object NumbersGame extends App {
 		override def toString = s"${expr.toString} = $i"
 	}
 
-	def values(expr: Expr) : List[Int] = expr match {
-		case v:Value => List(v.n)
-		case a:App => values(a.l) ++ values(a.r)
-	}
-
-	def eval(expr: Expr) : List[Int] = expr match {
-		case v:Value => (v.n gt 0) ? List(v.n) | Nil
-		case a:App => for { x <- eval(a.l);
-												y <- eval(a.r); 
-												if(valid(a.op, x, y))
-											} yield calcOp(a.op, x, y)
-	}
+	// Logic
 
 	def calcOp(op: Op, x: Int, y: Int) : Int = op match {
 		case Add 			=> x + y
@@ -71,13 +38,29 @@ object NumbersGame extends App {
 		case Divide 	=> (y =/= 1) && (x % y === 0)
 	}
 
-	def elem[T](x: T, ys: List[T]) : Boolean = ys match {
-    case Nil 		=> false
-    case h :: t => x == h || elem(x, t)
-  }
-	
+	def values(expr: Expr) : List[Int] = expr match {
+		case v:Value => List(v.n)
+		case a:App => values(a.l) ++ values(a.r)
+	}
+
+	def eval(expr: Expr) : List[Int] = expr match {
+		case v:Value => (v.n gt 0) ? List(v.n) | Nil
+		case a:App => for { x <- eval(a.l);
+												y <- eval(a.r); 
+												if(valid(a.op, x, y))
+											} yield calcOp(a.op, x, y)
+	}
+
 	def solution(e: Expr, ns: List[Int], n: Int) : Boolean = 
 		elem(values(e), subbags(ns)) && eval(e) === List(n)
+
+	def combine(lres: Result, rres: Result) : List[Result] = {
+		val (l, x) = (lres.expr, lres.i) 
+		val (r, y) = (rres.expr, rres.i)
+		for { o <- List(Add, Minus, Multiply, Divide);
+					if(valid(o, x, y))
+				} yield Result(App(o, l, r), calcOp(o, x, y))
+	}
 
 	def results(values: List[Int]) : List[Result] = values match {
 		case Nil 		 => Nil
@@ -89,13 +72,19 @@ object NumbersGame extends App {
 												} yield res
 	}
 
-	def combine(lres: Result, rres: Result) : List[Result] = {
-		val (l, x) = (lres.expr, lres.i) 
-		val (r, y) = (rres.expr, rres.i)
-		for { o <- List(Add, Minus, Multiply, Divide);
-					if(valid(o, x, y))
-				} yield Result(App(o, l, r), calcOp(o, x, y))
-	}
+	def solutions(ns: List[Int], target: Int) : List[Result] = 
+		for { nss <- subbags(ns);
+					r <- results(nss);
+					if(r.i === target)
+		} yield r
+
+
+	// Helper methods
+
+	def elem[T](x: T, ys: List[T]) : Boolean = ys match {
+    case Nil 		=> false
+    case h :: t => x == h || elem(x, t)
+  }
 
 	def nesplit[T](l: List[T]) : List[(List[T], List[T])] = 
 		l.indices.toList map { l.splitAt(_) } filterNot { t => (t._1.isEmpty || t._2.isEmpty) }
@@ -113,14 +102,13 @@ object NumbersGame extends App {
 					zs <- ys.permutations.toList
 		} yield zs
 
-	def solutions(ns: List[Int], target: Int) : List[Result] = 
-		for { nss <- subbags(ns);
-					r <- results(nss);
-					if(r.i === target)
-		} yield r
 
-	for(_ <- 1 to 10) solutions(List(1, 3, 7, 10, 25, 50), 765) timens
+	// Execution
+	val exec = IO {
+		println(solutions(List(1, 3, 7, 10, 25, 50), 765).mkString("\n"))
+	}
 
-	// println(solns.mkString("\n"))
+	// Change the world and calculate!
+	exec.unsafePerformIO
 
 }
