@@ -85,7 +85,7 @@ object NumbersGame extends App {
 		case h :: t  => for { (ls, rs) <- nesplit(values);
 													lx <- results(ls);
 													ry <- results(rs);
-													res <- combine(lx, ry)
+													res <- combine(lx, ry).view
 												} yield res
 	}
 
@@ -104,7 +104,7 @@ object NumbersGame extends App {
 		case Nil => List(List())
 		case h :: t => {
 			val ys = subs(t)
-			(ys ++ ys.map(h :: _))
+			(ys ++ ys.view.map(h :: _))
 		}
 	}
 
@@ -119,11 +119,7 @@ object NumbersGame extends App {
 					if(r.i === target)
 		} yield r
 
-	val solns = solutions(List(1, 3, 7, 10, 25, 50), 765) timens
-	val solns2 = solutions(List(1, 3, 7, 10, 25, 50), 765) timens
-	val solns3 = solutions(List(1, 3, 7, 10, 25, 50), 831) timens
-
-
+	for(_ <- 1 to 10) solutions(List(1, 3, 7, 10, 25, 50), 765) timens
 
 	// println(solns.mkString("\n"))
 
