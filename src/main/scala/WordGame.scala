@@ -3,7 +3,7 @@ package cntdn
 import io.Source
 import scalaz._, Scalaz._, effect._
 
-object Run extends App {
+object WordGame extends App {
 	
 	// Create the unsafe IO operation that will load the words
 	val loadDictionaryAction = IO { 

@@ -5,29 +5,20 @@ import scalaz._, Scalaz._, effect._
 object NumbersGame extends App {
 	
 	sealed trait Op
-	case object Add extends Op {
-		override def toString = "+"
-	}
-	case object Minus extends Op {
-		override def toString = "-"
-	}
-	case object Multiply extends Op {
-		override def toString = "*"
-	}
-	case object Divide extends Op {
-		override def toString = "/"
-	}
+	case object Add extends Op { override def toString = "+" }
+	case object Minus extends Op { override def toString = "-" }
+	case object Multiply extends Op { override def toString = "*" }
+	case object Divide extends Op { override def toString = "/" }
 
 	sealed trait Expr
-	case class Value(val n: Int) extends Expr {
-		override def toString = n.toString
-	}
+	case class Value(val n: Int) extends Expr { override def toString = n.toString }
 	case class App(val op: Op, val l: Expr, val r: Expr) extends Expr {
-		// def exprStr(e: Expr) : String = s"( ${exprStr(e)} )"
-		// override def toString = s"${exprStr(l)} ${op.toString} ${exprStr(r)}"
+		override def toString = s"(${l.toString} ${op.toString} ${r.toString})"
 	}
 
-	case class Result(val expr: Expr, val i: Int)
+	case class Result(val expr: Expr, val i: Int) {
+		override def toString = s"${expr.toString} = $i"
+	}
 
 	def values(expr: Expr) : List[Int] = expr match {
 		case v:Value => List(v.n)
@@ -98,11 +89,11 @@ object NumbersGame extends App {
 					zs <- ys.permutations.toList
 		} yield zs
 
-	def solutions(ns: List[Int], target: Int) : List[Expr] = 
+	def solutions(ns: List[Int], target: Int) : List[Result] = 
 		for { nss <- subbags(ns);
 					r <- results(nss);
 					if(r.i === target)
-		} yield r.expr
+		} yield r
 
 	val solns = solutions(List(1, 3, 7, 10, 25, 50), 765)
 
