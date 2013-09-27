@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="functional-countdown"
+		module="functional-countdown_2.10"
+		revision="0.1-SNAPSHOT"
+		conf="test-internal"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom"
+		date="20130719134329"/>
+	<dependencies>
+		<module organisation="org.scalaz" name="scalaz-effect_2.10">
+			<revision name="7.0.0" status="release" pubdate="20130421085026" resolver="public" artresolver="public" homepage="http://scalaz.org" downloaded="false" searched="false" default="false" conf="default, default(compile), master, runtime, compile" position="2">
+				<license name="BSD-style" url="http://www.opensource.org/licenses/bsd-license.php"/>
+				<metadata-artifact status="no" details="" size="2659" time="0" location="/Users/James/.ivy2/cache/org.scalaz/scalaz-effect_2.10/ivy-7.0.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.0/scalaz-effect_2.10-7.0.0.pom"/>
+				<caller organisation="functional-countdown" name="functional-countdown_2.10" conf="provided, test-internal, optional, runtime, compile, test" rev="7.0.0" rev-constraint-default="7.0.0" rev-constraint-dynamic="7.0.0" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="scalaz-effect_2.10" type="bundle" ext="jar" status="no" details="" size="428820" time="0" location="/Users/James/.ivy2/cache/org.scalaz/scalaz-effect_2.10/bundles/scalaz-effect_2.10-7.0.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scalaz/scalaz-effect_2.10/7.0.0/scalaz-effect_2.10-7.0.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scalaz" name="scalaz-core_2.10">
+			<revision name="7.0.0" status="release" pubdate="20130421085340" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://scalaz.org" downloaded="false" searched="false" default="false" conf="default, default(compile), compile(*), master(*), master, runtime, compile, runtime(*)" position="1">
+				<license name="BSD-style" url="http://www.opensource.org/licenses/bsd-license.php"/>
+				<metadata-artifact status="no" details="" size="2514" time="0" location="/Users/James/.ivy2/cache/org.scalaz/scalaz-core_2.10/ivy-7.0.0.xml" searched="false" origin-is-local="false" origin-location="http://oss.sonatype.org/content/repositories/releases/org/scalaz/scalaz-core_2.10/7.0.0/scalaz-core_2.10-7.0.0.pom"/>
+				<caller organisation="org.scalaz" name="scalaz-effect_2.10" conf="default, master, runtime, compile" rev="7.0.0" rev-constraint-default="7.0.0" rev-constraint-dynamic="7.0.0" callerrev="7.0.0"/>
+				<caller organisation="functional-countdown" name="functional-countdown_2.10" conf="provided, test-internal, optional, runtime, compile, test" rev="7.0.0" rev-constraint-default="7.0.0" rev-constraint-dynamic="7.0.0" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="scalaz-core_2.10" type="bundle" ext="jar" status="no" details="" size="8621005" time="0" location="/Users/James/.ivy2/cache/org.scalaz/scalaz-core_2.10/bundles/scalaz-core_2.10-7.0.0.jar">
+						<origin-location is-local="false" location="http://oss.sonatype.org/content/repositories/releases/org/scalaz/scalaz-core_2.10/7.0.0/scalaz-core_2.10-7.0.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.10.2" status="release" pubdate="20130606110543" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="default, default(compile), compile(*), master(*), master, runtime, compile, runtime(*)" position="0">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html          "/>
+				<metadata-artifact status="no" details="" size="2487" time="0" location="/Users/James/.ivy2/cache/org.scala-lang/scala-library/ivy-2.10.2.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.2/scala-library-2.10.2.pom"/>
+				<caller organisation="functional-countdown" name="functional-countdown_2.10" conf="provided, test-internal, optional, runtime, compile, test" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="0.1-SNAPSHOT"/>
+				<caller organisation="org.scalaz" name="scalaz-core_2.10" conf="default, master, runtime, compile" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.0" callerrev="7.0.0"/>
+				<caller organisation="org.scalaz" name="scalaz-effect_2.10" conf="default, master, runtime, compile" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.0" callerrev="7.0.0"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>

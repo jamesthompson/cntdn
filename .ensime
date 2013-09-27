@@ -1,0 +1,46 @@
+;; If your project contains a lot of files, it is advisable to enable (:disable-source-load-on-startup t)
+;; Otherwise Ensime might incur a massive lag at startup time
+;; See more information about that at http://aemoncannon.github.com/ensime/index.html
+
+(
+  :subprojects (
+    (
+      :name "Functional Countdown"
+      :module-name "functional-countdown"
+      :depends-on-modules (
+      
+      )
+      :package "functional-countdown"
+      :version "0.1-SNAPSHOT"
+      :compile-deps (
+        "/Users/James/.sbt/boot/scala-2.10.2/lib/scala-library.jar"
+        "/Users/James/.ivy2/cache/org.scalaz/scalaz-core_2.10/bundles/scalaz-core_2.10-7.0.0.jar"
+        "/Users/James/.ivy2/cache/org.scalaz/scalaz-effect_2.10/bundles/scalaz-effect_2.10-7.0.0.jar"
+      )
+      :runtime-deps (
+        "/Users/James/.sbt/boot/scala-2.10.2/lib/scala-library.jar"
+        "/Users/James/.ivy2/cache/org.scalaz/scalaz-core_2.10/bundles/scalaz-core_2.10-7.0.0.jar"
+        "/Users/James/.ivy2/cache/org.scalaz/scalaz-effect_2.10/bundles/scalaz-effect_2.10-7.0.0.jar"
+        "/Users/James/Desktop/cntdn/target/scala-2.10/classes"
+        "/Users/James/Desktop/cntdn/target/scala-2.10/classes"
+      )
+      :test-deps (
+        "/Users/James/.sbt/boot/scala-2.10.2/lib/scala-library.jar"
+        "/Users/James/.ivy2/cache/org.scalaz/scalaz-core_2.10/bundles/scalaz-core_2.10-7.0.0.jar"
+        "/Users/James/.ivy2/cache/org.scalaz/scalaz-effect_2.10/bundles/scalaz-effect_2.10-7.0.0.jar"
+        "/Users/James/Desktop/cntdn/target/scala-2.10/classes"
+        "/Users/James/Desktop/cntdn/target/scala-2.10/test-classes"
+      )
+      :source-roots (
+        "/Users/James/Desktop/cntdn/src/main/scala"
+        "/Users/James/Desktop/cntdn/src/main/java"
+        "/Users/James/Desktop/cntdn/target/scala-2.10/src_managed/main"
+        "/Users/James/Desktop/cntdn/src/test/scala"
+        "/Users/James/Desktop/cntdn/src/test/java"
+        "/Users/James/Desktop/cntdn/target/scala-2.10/src_managed/test"
+      )
+      :target "/Users/James/Desktop/cntdn/target/scala-2.10/classes"
+      :test-target "/Users/James/Desktop/cntdn/target/scala-2.10/test-classes"
+    )
+  )
+)
